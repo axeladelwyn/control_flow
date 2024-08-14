@@ -1,3 +1,5 @@
+use std::io;
+
 fn main() {
     let number = 11;
 
@@ -63,6 +65,25 @@ fn main() {
         println!("{countdown}");
 
     }
-    println!("LIFTOFF!!!");
     
+    println!("Enter temperature in Celcius:");
+
+    let mut celcius = String::new();
+
+    io::stdin().read_line(&mut celcius).expect("failed to read line");
+
+    let celcius: f64 = celcius.trim().parse().expect("Please type a number!");
+
+    let farenheit = celcius_farenheit(celcius);
+
+    println!("{celcius} Celcius is equal to {farenheit} farenheit");
+    
+
 }
+
+fn celcius_farenheit(celcius:f64) -> f64 {
+    (celcius * 9.0 / 5.0) + 32.0
+}
+
+
+
